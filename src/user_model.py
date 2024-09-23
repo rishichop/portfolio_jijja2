@@ -1,5 +1,5 @@
 from flask_login import UserMixin
-from utils import db
+from .utils import db
 from sqlalchemy import Sequence, event
 
 custom_id_seq = Sequence('custom_id_seq', start=1, metadata=db.metadata)

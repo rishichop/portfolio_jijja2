@@ -1,10 +1,10 @@
 from flask_login import LoginManager, login_user, login_required, logout_user
 from flask import render_template, url_for, redirect, request, Blueprint, flash, session
-from utils import bcrypt, login_manager, db
+from .utils import bcrypt, login_manager, db
 from datetime import datetime, timedelta
-from user_model import Users
-from forms import RegisterForm, OTPForm
-from sms_service import send_sms
+from .user_model import Users
+from .forms import RegisterForm, OTPForm
+from .sms_service import send_sms
 import random
 import string
 
