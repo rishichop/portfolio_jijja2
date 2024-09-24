@@ -71,7 +71,7 @@ def verify():
             
             db.session.add(user)
             db.session.commit()
-            
+            logout_user()
             flash('OTP verified Successfully')
             return redirect(url_for('main.login'))
         else:
