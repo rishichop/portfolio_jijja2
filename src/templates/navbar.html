@@ -1,0 +1,22 @@
+{% block navbar %}
+<div class="w-full bg-gray-800 block">
+    <nav class="container mx-auto flex justify-between items-center p-4">
+        <a href="{{ url_for('main.home') }}" class="text-white text-2xl font-bold">Portfolio</a>
+        <button class="text-white md:hidden focus:outline-none">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="hidden md:block">
+            <ul class="flex space-x-4">
+                {% if not current_user.is_authenticated: %}
+                <li><a href="{{ url_for('main.login') }}" class="text-white hover:text-gray-400">Login</a></li>
+                <li><a href="{{ url_for('main.register') }}" class="text-white hover:text-gray-400">Register</a></li>
+                {% else: %}
+                <li><a href="{{ url_for('main.logout') }}" class="text-white hover:text-gray-400">Logout</a></li>
+                <li><a href="{{ url_for('main.contact') }}" class="text-white hover:text-gray-400">Contact</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}OTP{% endblock %}
+
+{% block content %}
+<div class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="container w-full max-w-md p-8 bg-white shadow-md rounded-lg">
+        <h1 class="text-2xl font-bold mb-6 text-center text-gray-700">Register</h1>
+        <h3 class="text-2xl font-bold mb-6 text-center text-gray-700">OTP Has been sent to your phone number</h3>
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+
+            <div class="mb-4">
+                {{ form.otp.label(class="block text-sm font-medium text-gray-600") }}
+                {{ form.otp(class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm") }}
+                {% for error in form.otp.errors %}
+                <span class="text-red-600 text-sm">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+
+
+            <div class="mb-6">
+                {{ form.submit(class="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500") }}
+            </div>
+
+            <p class="text-center text-blue-600 mt-4">
+                {% with messages = get_flashed_messages(with_categories=True) %}
+                    {% if messages %}
+                        <div class="alert alert-dismissible fade show" role="alert">
+                            {% for category, message in messages %}
+                                <div class="alert alert-{{ category }}">{{ message }}</div>
+                            {% endfor %}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    {% endif %}
+                {% endwith %}
+            </p>
+        </form>
+    </div>
+</div>
+{% endblock %}

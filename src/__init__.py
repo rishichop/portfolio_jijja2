@@ -1,6 +1,6 @@
 from .config import Config
 from flask import Flask
-from .utils import db, bcrypt, login_manager
+from .utils import db, bcrypt, login_manager, mail
 from .routes import main_routes
 
 
@@ -11,6 +11,7 @@ def create_app():
     db.init_app(app)
     bcrypt.init_app(app)
     login_manager.init_app(app)
+    mail.init_app(app)
 
     app.register_blueprint(main_routes)
 
